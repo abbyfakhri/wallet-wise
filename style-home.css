@@ -3,6 +3,10 @@
 
 body{
     margin: 20px;
+    background-color: #FF3CAC;
+background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+
+
 }
 
 .header{
@@ -31,6 +35,7 @@ padding:20px;
     justify-content: space-between;
 }
 
+
 .user-profile{
     
 }
@@ -48,3 +53,71 @@ padding:20px;
     transition: transform 500ms ease-in-out;
 
 }
+
+
+.textbox{
+    border-radius: 20px;
+    border: none;
+    height: 50px;
+    width: 500px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15pt;
+    text-align: center;
+}
+
+.centered{
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
+    padding-right:15px;
+}
+
+.category-btn:hover{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+}
+
+.category-box{
+    background-color:white;
+    width:500px;
+    height:300px;
+    padding:20px;
+    margin-top:10px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.category-box-border{
+    
+}
+
+.recent-transactions-titlebox{
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+    padding:20px;
+    background-color: #483884;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.recent-transactions-contentbox{
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+    padding:20px;
+    background-color: #7062a0;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.transaction-box{
+    background-color:white;
+    width:90%;
+    margin: 20px;
+    border-radius: 20px;
+    padding: 5px;
+    text-align: center;
+    color: #483884;
+}
+
