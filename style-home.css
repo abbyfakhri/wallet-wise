@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body{
+    margin: 20px;
+}
+
+.header{
+    font-family: 'Berkshire Swash', cursive;
+    color: #483884;
+   
+    font-size:3rem;
+}
+ 
+.balance-box{
+background-color: #5f4f99;
+height:120px;
+border-radius: 20px;
+padding:20px;
+}
+
+.balance-text{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 15pt;
+}
+
+.balance-container{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+
+.user-profile{
+    
+}
+.user-profile:hover{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+}
+
+.add-btn{
+    
+}
+
+.add-btn:hover{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+
+}
