@@ -27,5 +27,13 @@ function changeBack(index){
   }
 }
 
-console.log(categoryIcon.length);
+const addButton = document.getElementById('add-button');
+
+addButton.addEventListener('click', function() {
+  // Create a new <div> element
+  const recentDiv = document.getElementById('recent');
+
+  // Add the <div> element to the page
+  document.body.appendChild(recentDiv);
+});
  
