@@ -35,9 +35,8 @@ padding:20px;
 }
 
 
-.user-profile{
-    
-}
+
+
 .user-profile:hover{
     transform: scale(1.1);
     transition: transform 500ms ease-in-out;
@@ -73,8 +72,7 @@ padding:20px;
 }
 
 .category-btn:hover{
-    transform: scale(1.1);
-    transition: transform 500ms ease-in-out;
+    
 }
 
 .category-box{
@@ -134,5 +132,17 @@ padding:20px;
     
     border-radius: 10px;
     padding: 5px;
+    
+    user-select: none;
 }
+
+.category-icon:hover{
+    transform: scale(1.1);
+   
+    transition: transform 500ms ease-in-out;
+   
+    border: 2px solid #7062a0;
+    
+}
+
 
