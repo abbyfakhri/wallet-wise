@@ -27,13 +27,54 @@ function changeBack(index){
   }
 }
 
-const addButton = document.getElementById('add-button');
 
-addButton.addEventListener('click', function() {
-  // Create a new <div> element
-  const recentDiv = document.getElementById('recent');
 
-  // Add the <div> element to the page
-  document.body.appendChild(recentDiv);
-});
+
+
+
+let addButton = document.getElementById("addButton");
+let addNewDivToggle = true;
+
+/* function addNewDiv(){
+  if(addNewDivToggle){
+    const divDestination = document.getElementById('recent-transactions-contentbox')
+    const newDiv = document.getElementById('recent');
+    //document.div.appendChild(recentDiv);
+    divDestination.innerHTML += newDiv.innerHTML;
+    console.log("div added");
+    addNewDivToggle = false;
+  }
+  else{
+    console.log("div adding failed")
+    addNewDivToggle = true;
+  }
+  
+} */
+
+// use class transaction-box and centered
+
+function addNewTransaction(){
+  if(addNewDivToggle){
+    const newDiv = document.createElement("div");
+    const divDestination = document.getElementById('recent-transactions-contentbox')
+    const demoReferenceDiv = document.getElementById('recent');
+
+    newDiv.classList.add('transaction-box');
+    newDiv.classList.add('centered');
+    //newDiv.divInnerHTML = 'content or html stuff'
+    newDiv.innerHTML += demoReferenceDiv.innerHTML;
+    
+    divDestination.appendChild(newDiv);
+
+    console.log("add success");
+    addNewDivToggle = false;
+  }
+
+  else{
+    addNewDivToggle = true;
+  }
+}
+
+
+
  
