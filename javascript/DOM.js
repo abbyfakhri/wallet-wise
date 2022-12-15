@@ -1,4 +1,4 @@
-// Get a reference to the div
+/* // Get a reference to the div
 const categoryIconDiv_before = document.getElementById('categoryIcon');
 
 // Add a click event listener to the div
@@ -7,14 +7,28 @@ categoryIconDiv_before.addEventListener('click', function() {
 
   categoryIconDiv_before.style.backgroundColor = 'red';
 
-});
+}); */
 
-const categoryIconDiv_after = document.getElementById('categoryIcon');
+const changeCategoryIconColor = () =>{
+  let element = document.getElementById('categoryIcon');
 
-// Add a click event listener to the div
-categoryIconDiv_after.addEventListener('click', function() {
-  // When the div is clicked, set its background color to red
+  element.addEventListener('click',()=>{
+    element.style.backgroundColor = 'blue';
+  })
 
-  categoryIconDiv_after.style.backgroundColor = 'white';
+  changeCategoryIconColor_default();
+}
 
-});
+
+const changeCategoryIconColor_default = () =>{
+  let element = document.getElementById('categoryIcon');
+  element.removeEventListener('',()=>{
+    element.style.backgroundColor = 'red';
+  })
+}
+
+
+
+//changeCategoryIconColor();
+
+ 
