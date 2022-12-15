@@ -1,3 +1,32 @@
+<?php 
+ 
+include 'config.php';
+ 
+error_reporting(0);
+ 
+session_start();
+ 
+if (isset($_SESSION['username'])) {
+    header("Location: home.php");
+}
+ 
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+ 
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($con, $sql);
+    if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['username'];
+        header("Location: home.php");
+    } else {
+        echo "<script>alert('Username atau password Anda salah. Silahkan coba lagi!')</script>";
+    }
+}
+ 
+?>
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +44,7 @@
 
 
     <div class = "container">
-        <img src="/wallet.jpg" alt="" style="width:50%" class = "bg-image">
+        <img src="wallet.jpg" alt="" style="width:50%" class = "bg-image">
 
         <div class = "login-form">
         <div>
@@ -26,17 +55,16 @@
                 <h3 style="font-size:25px; text-align:center; padding-bottom: 20px; color:#726099">Your future self will thank you <br>for every dollar you save today.</h3>
 
 
+                <form action="" method="post">
                 <div id="username" class="forms container">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                     </svg>
 
                     <div>
-                        <form action="" method="get" >
-
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="email or username" style= "text-align: center;"class = "textbox" required>
+                              <input type="text" name="username" id="username" placeholder ="email or username" style= "text-align: center;"class = "textbox" value="<?php echo $_POST['username']; ?>"required>
                         </div>
                     
 
@@ -51,11 +79,9 @@
                     </svg>
 
                     <div>
-                        <form action="" method="get" >
-
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="password" style= "text-align: center;" class = "textbox" required>
+                              <input type="password" name="password" id="password" placeholder ="password" style= "text-align: center;" class = "textbox" value= "<?php echo $_POST['password']; ?>"required>
                             
                             </div>
                     
@@ -72,10 +98,11 @@
                 
 
                 <div class="container">
-                    <button class="login-button">
-                        <a href="*" style ="color:white; text-decoration: none;">LOGIN</a>
+                    <button name="submit" class="btn" style ="color:white; text-decoration: none;" >
+                        LOGIN
                     </button>
                 </div>
+                </form>
 
                 <h3 style="text-align:center; font-size:20px;color:#726099;padding:20px">don't have account yet?, 
                    <a href="/signup.html" style="color:#726099">click here to sign up</a> </h3>
