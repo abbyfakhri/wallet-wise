@@ -112,10 +112,25 @@
                     <form action="" method="get" >
 
                         
-                    <input type="text" name="name" id="inputAmount" placeholder ="input your spend amount"class = "textbox" required >
+                    <input type="" name="name" id="inputAmount" placeholder ="input your spend amount" class = "textbox" required >
 
+                    
                     </form>
 
+                    <script>
+                        let form = document.getElementById('inputAmount');
+
+                        form.addEventListener("input",() =>{
+                            
+                            let num = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
+                    
+                            let formattedNum = new Intl.NumberFormat().format(num);
+                            
+                            form.value = formattedNum;
+
+                        });
+
+                </script>
                 </div>
 
 

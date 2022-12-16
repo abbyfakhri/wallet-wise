@@ -45,10 +45,6 @@ function changeBack(index){
 }
 
 
-
-
-
-
 let addButton = document.getElementById("addButton");
 let addNewDivToggle = true;
 
@@ -62,24 +58,20 @@ function addNewTransaction(){
     const newDiv = document.createElement("div");
     let newDivIcon = document.createElement("div");
     const divDestination = document.getElementById('recent-transactions-contentbox')
-    //const demoReferenceDiv = document.getElementById('recent');
     const form = document.getElementById('inputAmount');
 
     
     
     newDiv.classList.add('transaction-box');
     newDiv.classList.add('centered');
-    
+
     newDivIcon.classList.add('centered');
 
    
-    if(getForm().length > 20){
+    if(getForm().length > 22){
 
       newDiv.innerHTML = getForm();
-      //let text = 'disini icon ke-'+getIconIndex();
-      //let imageSourceTemp = "<div>"+iconSource[getIconIndex()]+"</div>"
-      //newDivIcon.appendChild(iconSource[getIconIndex()]);
-      //newDivIcon.innerHTML = imageSourceTemp;
+      
       let icon = iconSource[getIconIndex()].cloneNode(true);
 
       newDivIcon.appendChild(icon);
@@ -87,9 +79,10 @@ function addNewTransaction(){
       newDiv.appendChild(newDivIcon);
       
       divDestination.appendChild(newDiv);
-      //divDestination.appendChild(icon[getIconIndex()]);
+      
       console.log("add success");
       form.value = ""; // to reset the form
+      changeBack(tempIndex);
     }
     else{
       alert('spend amount cannot be empty');
@@ -105,6 +98,10 @@ function addNewTransaction(){
   }
 }
 
+
+
+
+
 function getIconSource(){
 
   const categoryDiv = document.getElementById('category-box');
@@ -117,17 +114,21 @@ function getIconSource(){
   return imageSource;
 }
 
-
-
 function getForm(){
   const form = document.getElementById('inputAmount');
-  
   console.log('form value succesfully returned');
   console.log(form.value);
-  const val = "<div>"+"<h3>"+form.value+"</h3>"+"</div>";
-  return val;
-}
+  if(tempIndex == 1){
+    const val = "<div>"+"<h3> +"+form.value+"</h3>"+"</div>";
+    return val;
+    
+  }
+  else{
+    const val = "<div>"+"<h3> -"+form.value+"</h3>"+"</div>";
+    return val;
 
+  }
+}
 
 
 
