@@ -146,23 +146,29 @@ function getForm(){
   }
 }
 
-let totalTransaction = 0;
 
 function calculateCurrentBalance(){
 
   const currentBalance = document.getElementById('current-balance');
   let form = document.getElementById('inputAmount');
 
-  let amount = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
+  let currentBalanceValue = parseFloat(currentBalance.innerText.replace(/Rp|\.|,|\s/g, ""));
   
-  totalTransaction += amount;
-  console.log('total amount = ', amount);
-  console.log('total transaction = ',totalTransaction);
+  let amount = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
+  if(tempIndex == 1){
+    currentBalanceValue += amount;
+  }
+  else{
+    currentBalanceValue -= amount;
 
-  let formattedNum = new Intl.NumberFormat().format(totalTransaction);
+  }
+  console.log('recent transaction = ', amount);
+  console.log('current balance = ',currentBalanceValue);
 
-  currentBalance.innerHTML = "";
-  currentBalance.innerHTML = formattedNum.toString();
+  let formattedNum = new Intl.NumberFormat().format(currentBalanceValue);
+
+  currentBalance.innerText = "";
+  currentBalance.innerText = formattedNum.toString();
   // style="font-size:50pt;"
 
   
