@@ -53,14 +53,27 @@ let addNewDivToggle = true;
 
 let iconSource = getIconSource();
 
+let transactionCount = 0;
+
+function checkIfTransactionExist(){
+
+  if(transactionCount == 0){
+    const noTransactionNotify = document.getElementById('no-transaction-notify');
+    noTransactionNotify.remove();
+    transactionCount++;
+  }
+  
+}
+
+    
 function addNewTransaction(){
   if(addNewDivToggle){
+
+    checkIfTransactionExist();
     const newDiv = document.createElement("div");
     let newDivIcon = document.createElement("div");
     const divDestination = document.getElementById('recent-transactions-contentbox')
     const form = document.getElementById('inputAmount');
-
-    
     
     newDiv.classList.add('transaction-box');
     newDiv.classList.add('centered');
@@ -81,8 +94,13 @@ function addNewTransaction(){
       divDestination.appendChild(newDiv);
       
       console.log("add success");
+      calculateCurrentBalance();
+
       form.value = ""; // to reset the form
-      changeBack(tempIndex);
+
+
+      transactionCount++;
+      
     }
     else{
       alert('spend amount cannot be empty');
@@ -96,10 +114,8 @@ function addNewTransaction(){
   else{
     addNewDivToggle = true;
   }
+
 }
-
-
-
 
 
 function getIconSource(){
@@ -128,6 +144,28 @@ function getForm(){
     return val;
 
   }
+}
+
+let totalTransaction = 0;
+
+function calculateCurrentBalance(){
+
+  const currentBalance = document.getElementById('current-balance');
+  let form = document.getElementById('inputAmount');
+
+  let amount = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
+  
+  totalTransaction += amount;
+  console.log('total amount = ', amount);
+  console.log('total transaction = ',totalTransaction);
+
+  let formattedNum = new Intl.NumberFormat().format(totalTransaction);
+
+  currentBalance.innerHTML = "";
+  currentBalance.innerHTML = formattedNum.toString();
+  // style="font-size:50pt;"
+
+  
 }
 
 
