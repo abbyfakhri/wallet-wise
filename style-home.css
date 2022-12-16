@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Candal&display=swap');
 
 body{
     margin: 20px;
-    
+    user-select: none;
 
 
 }
@@ -22,8 +23,9 @@ border-radius: 20px;
 padding:20px;
 }
 
+
 .balance-text{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Candal', sans-serif;
     color: white;
     font-size: 15pt;
 }
@@ -64,6 +66,12 @@ padding:20px;
     text-align: center;
 }
 
+.textbox:hover{
+    box-shadow: 5px 5px 10px rgb(71, 67, 67);
+    transition: box-shadow 0.5s ease-in-out;
+
+}
+
 .centered{
     display:flex;
     align-items:center;
@@ -80,7 +88,7 @@ padding:20px;
     width:500px;
     height:300px;
     padding:20px;
-    margin-top:10px;
+   
     border-radius: 20px;
     font-family: 'Montserrat', sans-serif;
 
@@ -93,21 +101,35 @@ padding:20px;
     transition: box-shadow 0.5s ease-in-out;
 }
 
+.category-box-title{
+    font-family: 'Montserrat', sans-serif;
+    background-color:white;
+    width:500px;
+    height:auto;
+    padding: 10px;
+    border-radius:20px;
+    text-align: center;
+    color:#483884;
+    font-size: 15pt;
+    
+}
+
 
 
 .recent-transactions-titlebox{
     font-family: 'Montserrat', sans-serif;
-    margin: 20px;
-    padding:20px;
-    background-color: #483884;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
+    background-color:#483884;
+    width:500px;
+    height:auto;
+    padding: 10px;
+    border-radius:20px;
+    text-align: center;
+    color:#483884;
+    font-size: 15pt;
 }
 
 .recent-transactions-contentbox{
     font-family: 'Montserrat', sans-serif;
-    margin: 20px;
     padding:20px;
     background-color: #7062a0;
     width: 100%;
@@ -145,4 +167,6 @@ padding:20px;
     
 }
 
-
+.icons{
+    user-select: none;
+}
