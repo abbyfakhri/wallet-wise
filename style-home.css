@@ -39,10 +39,7 @@ padding:20px;
 
 
 
-.user-profile:hover{
-    transform: scale(1.1);
-    transition: transform 500ms ease-in-out;
-}
+
 
 .add-btn{
     color: red;
@@ -79,9 +76,7 @@ padding:20px;
     padding-right:15px;
 }
 
-.category-btn:hover{
-    
-}
+
 
 .category-box{
     background-color:white;
@@ -170,3 +165,35 @@ padding:20px;
 .icons{
     user-select: none;
 }
+
+.dropdown-content{
+   display: none; 
+   background-color:white;
+   width:90px;
+   height:100px;
+   padding: 10px;
+   margin: 5px;
+   position:absolute;
+   border-radius: 20px;
+   font-family: 'Montserrat', sans-serif;
+
+   
+}
+
+.dropdown-content a{
+    color:#483884;
+}
+.user-profile{
+    position:relative;
+}
+
+.user-profile:hover{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+}
+.user-profile:hover .dropdown-content{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+    display:block;
+}
+
