@@ -15,13 +15,13 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
  
     $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = mysqli_query($con, $sql);
+    $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
         $_SESSION['username'] = $row['username'];
         header("Location: home.php");
     } else {
-        echo "<script>alert('Username atau password Anda salah. Silahkan coba lagi!')</script>";
+        echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
     }
 }
  
@@ -98,14 +98,14 @@ if (isset($_POST['submit'])) {
                 
 
                 <div class="container">
-                    <button name="submit" class="btn" style ="color:white; text-decoration: none;" >
+                    <button name="submit" class="login-button" style ="color:white; text-decoration: none;" >
                         LOGIN
                     </button>
                 </div>
                 </form>
 
                 <h3 style="text-align:center; font-size:20px;color:#726099;padding:20px">don't have account yet?, 
-                   <a href="/signup.html" style="color:#726099">click here to sign up</a> </h3>
+                   <a href="signup.php" style="color:#726099">click here to sign up</a> </h3>
    
 
                     <div class="container">
