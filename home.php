@@ -27,11 +27,6 @@ if (!isset($_SESSION['username'])) {
         <h1>WalletWise</h1>
     </div>
     
-    <div class="input-group">
-            <a href="logout.php" class="btn">Logout</a>
-            </div>
-        </form>
-    </div>
     <div class = "balance-box balance-container">
         <div class = "balance-text balance-container">
             
