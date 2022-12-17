@@ -218,12 +218,22 @@
                         let form = document.getElementById('inputAmount');
 
                         form.addEventListener("input",() =>{
+
+                            if(form.value.length == 0){
+                                form.value = 0;
+                            }
                             
                             let num = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
-                    
+                            
+                            if(isNaN == true){
+                                form.value = 0;
+                            }
+                            
                             let formattedNum = new Intl.NumberFormat().format(num);
                             
                             form.value = formattedNum;
+
+                            
 
                         });
 
