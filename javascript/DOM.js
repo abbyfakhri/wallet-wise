@@ -1,23 +1,27 @@
 
 
-
-let iconToggle = true;
 let categoryIcon = document.querySelectorAll('.category-icon');
+let iconToggle = true;
+let iconBox = document.getElementById('.category-box');
+//let iconTemp = iconBox.querySelectorAll('.category-icon');
+
+
+
 
 let tempIndex = null;
 
 function changeColor(index){
 
 
-
   if(iconToggle){
-    categoryIcon[index].style.backgroundColor = "rgb(206, 205, 206)";
+    categoryIcon[index].style.backgroundColor = "lightblue"
     tempIndex = index; // to get index
     changeBack(index);
     iconToggle = false;
   }
   else{
-    categoryIcon[index].style.backgroundColor = "white";  
+    categoryIcon[index].style.backgroundColor = "inherit";  
+
     iconToggle = true;
   }
 
@@ -38,7 +42,8 @@ function getCategoryIcon(){
 function changeBack(index){
   for(i=0;i<=categoryIcon.length;i++){
     if(i != index){
-      categoryIcon[i].style.backgroundColor = "white";
+      categoryIcon[i].style.backgroundColor = "inherit";
+       
     }
     iconToggle = false;
   }
@@ -118,10 +123,11 @@ function addNewTransaction(){
 }
 
 
+
 function getIconSource(){
 
   const categoryDiv = document.getElementById('category-box');
-  const categoryIcons = categoryDiv.getElementsByTagName("svg");
+  const categoryIcons = categoryDiv.getElementsByTagName("img");
   let imageSource = [];
   for(let i = 0;i<categoryIcons.length;i++){
     imageSource[i] = categoryIcons[i];
