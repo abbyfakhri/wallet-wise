@@ -20,6 +20,7 @@
 
     </div>
 
+    
 
     <div class="balance-box balance-container">
         <div class="balance-text balance-container">
@@ -30,7 +31,20 @@
             <p id="current-balance" style="font-size:50pt;">
 
             
+
+            <?php
+
+                require_once('home-process.php');
+                
+                
+                $value = getUserBalance($connection);
+                
+                echo $value;
+
+                //mysqli_close($connection);
+            ?>
             
+
             </p>
 
         </div>
@@ -221,14 +235,16 @@
             <div id="addSpend" class="addSpend-box">
 
 
-                <form action="" method="get">
+                <form action="home-process.php" method="get">
 
 
-                    <input type="" name="name" id="inputAmount" placeholder="input your spend amount" class="textbox"
+
+
+                    <input type="text" name="input-amount" id="inputAmount" placeholder="input your spend amount" class="textbox"
                         required>
 
 
-                </form>
+                
 
                 <script>
                 let form = document.getElementById('inputAmount');
@@ -257,14 +273,20 @@
 
 
         </div>
-
-        <div id="addButton" class="add-new-transaction-btn" onclick=addNewTransaction()>
+        
+        <button type = "submit" id="addButton" class="add-new-transaction-btn" name = "addButton" style = "background-color: rgba(0,0,0,0); text-decoration:none;border:none" >
+        <!-- onclick=addNewTransaction() -->
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="white"
                 class="bi bi-patch-plus-fill add-btn" viewBox="0 0 16 16">
                 <path
                     d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
             </svg>
-        </div>
+
+        </button>
+        
+        
+
+        </form>
 
         <div id="recent-transactions">
             <div class="recent-transactions-titlebox">

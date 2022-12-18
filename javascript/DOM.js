@@ -4,7 +4,9 @@ let categoryIcon = document.querySelectorAll('.category-icon');
 let iconToggle = true;
 let iconBox = document.getElementById('.category-box');
 //let iconTemp = iconBox.querySelectorAll('.category-icon');
+const balance = document.getElementById('current-balance');
 
+formatNum(balance.innerText);
 
 
 
@@ -179,6 +181,13 @@ function calculateCurrentBalance(){
 
   
 }
+
+function formatNum(value){
+  let formattedNum = new Intl.NumberFormat().format(value);
+  return formattedNum;
+
+}
+
 
 
 
