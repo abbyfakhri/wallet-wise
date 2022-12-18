@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/project/uas/style.css">
 
     <title>WalletWise</title>
 </head>
@@ -15,7 +15,7 @@
 
 
     <div class = "container">
-        <img src="/wallet.jpg" alt="" style="width:50%" class = "bg-image">
+        <img src="/project/uas/wallet.jpg" alt="" style="width:50%" class = "bg-image">
 
         <div class = "login-form">
         <div>
@@ -25,19 +25,17 @@
                 <!-- <h2 style="color: white; text-align:center; font-size:30px; padding-bottom: 15px;">Hello There!</h2> -->
                 <h3 style="font-size:25px; text-align:center; padding-bottom: 20px; color:#726099">Your future self will thank you <br>for every dollar you save today.</h3>
 
-
+            <form action="signup-process.php" method="get" >
                 <div id="username" class="forms container">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                     </svg>
 
                     <div>
-                        <form action="" method="get" >
-
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="email or username" style= "text-align: center;" class = "textbox" required>
-                        </div>
+                              <input type="text" name="username" id="name" placeholder ="email or username" style= "text-align: center;" class = "textbox" required>
+                            </div>
                     
 
                     </div>
@@ -51,11 +49,11 @@
                     </svg>
 
                     <div>
-                        <form action="" method="get" >
+                       
 
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="password" style= "text-align: center;" class = "textbox" required>
+                              <input type="password" name="create-password" id="name" placeholder ="password" style= "text-align: center;" class = "textbox" required>
                             
                             </div>
                     
@@ -73,11 +71,11 @@
 
                     <div>
                         
-                        <form action="" method="get" >
+                       
 
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="confirm password" style= "text-align: center;" class = "textbox" required>
+                              <input type="password" name="confirm-password" id="name" placeholder ="confirm password" style= "text-align: center;" class = "textbox" required>
                             
                             </div>
                     
@@ -91,16 +89,18 @@
 
                 </div>
 
-                
+            
 
                 <div class="container">
                     <button class="login-button">
-                        <a href="*" style ="color:white; text-decoration: none;">Sign Up</a>
+                        <input type="submit" name="" value="Sign Up" style ="color:white; text-decoration: none; background-color:inherit;border:none">
                     </button>
                 </div>
 
+                </form>
+
                 <h3 style="text-align:center; font-size:20px;color:#726099;padding:20px">already have an account?, 
-                   <a href="/index.html" style="color:#726099">click here to login</a> </h3>
+                   <a href="/project/uas/index.php" style="color:#726099">click here to login</a> </h3>
    
 
                     <div class="container">
@@ -109,7 +109,7 @@
                             <div class="google-btn container-login">
 
                                 <div style="padding-left: 20px;">
-                                    <img src="/Google__G__Logo.svg.png" alt="" style="width: 20px; height: 20px">
+                                    <img src="/project/uas/Google__G__Logo.svg.png" alt="" style="width: 20px; height: 20px">
 
                                 </div>
                                 
