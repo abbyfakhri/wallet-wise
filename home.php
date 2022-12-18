@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
  
 ?>
  
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +26,10 @@ if (!isset($_SESSION['username'])) {
     <div class="header">
         <h1>WalletWise</h1>
     </div>
+
+    <div class="input-group">
+            <a href="logout.php" class="btn">Logout</a>
+            </div>
     
     <div class = "balance-box balance-container">
         <div class = "balance-text balance-container">
@@ -45,6 +49,7 @@ if (!isset($_SESSION['username'])) {
     
             <div class="user-profile">
                 <img src="assets/patrick_coklatttttttt_2.jpg" alt="" style="width:80px;height:80px;border-radius: 50%;">
+                <a href="profile.php"><?php echo $_SESSION['username'];?></a>
             </div>
 
         </div>
