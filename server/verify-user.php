@@ -13,6 +13,8 @@
     
                     console.log('username found ')
 
+                    sessionStorage.setItem('username', '$username');
+
                     </script>";
             echo "<script>window.location = '/project/uas/home.html'</script>";
 

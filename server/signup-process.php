@@ -58,7 +58,9 @@ if(isset($_GET['username']) && isset($_GET['create-password']) && $_GET['confirm
         echo "
         <script>alert('account created')</script>
         ";
-        echo "<script>window.location = '/project/uas/home.html';</script>";
+        echo "<script>window.location = '/project/uas/home.html';                    
+        sessionStorage.setItem('username', '$username');
+        </script>";
 
     }
 

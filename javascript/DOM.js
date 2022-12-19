@@ -169,7 +169,7 @@ const category_string =
     'e-wallet'
   ];
 
-  
+
 
 function calculateCurrentBalance(){
 
@@ -184,13 +184,13 @@ function calculateCurrentBalance(){
   if(tempIndex == 1 || tempIndex == 8){
 
     currentBalanceValue += amount;
-    addToHistory('abby',amount,category_string[tempIndex]);
-    updateBalance(currentBalanceValue);
+    addToHistory(dataFromSession,amount,category_string[tempIndex]);
+    updateBalance(currentBalanceValue,dataFromSession);
   }
   else{
     currentBalanceValue -= amount;
-    addToHistory('abby',amount,category_string[tempIndex]);
-    updateBalance(currentBalanceValue);
+    addToHistory(dataFromSession,amount,category_string[tempIndex]);
+    updateBalance(currentBalanceValue,dataFromSession);
 
   }
 
@@ -247,13 +247,16 @@ const _getUserBalance = ()=>{
     
 }
  */
-const getBalance = ()=>{
+const getBalance = (username)=>{
 
   const currentBalance = document.getElementById("current-balance");
   //let value;
   $.ajax({
     url: 'server/getUserBalance.php',
     type: 'GET',
+    data:{
+      username:username
+    },
     success: (response) => {
 
       currentBalance.innerText = response;
@@ -266,16 +269,17 @@ const getBalance = ()=>{
   //return(current);
 }
 
-const updateBalance = (transaction) => {
+const updateBalance = (transaction,username) => {
   $.ajax({
     url: 'server/updateBalance.php',
     type: 'POST',
     data:{
-      data1:transaction
+      data1:transaction,
+      username:username
     },
     success: (response) => {
       console.log("succesfully update user balance:",response,"\n");
-      getBalance();
+      getBalance(dataFromSession);
       //return(response);
     }
   });
@@ -389,9 +393,11 @@ const getHistory = (username) =>{
     }
   });
 }
-getBalance();
+getBalance(dataFromSession);
 
-getHistory('abby');
+// dataFromSession == username
+const userID = dataFromSession;
+getHistory(userID);
 
 
 

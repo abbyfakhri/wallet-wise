@@ -2,14 +2,14 @@
 
 require_once 'connection.php';
 
-function getUserBalance($connection){
+function getUserBalance($connection,$username){
     
     $query = mysqli_query($connection," 
     
         SELECT
         balance
         FROM user_balance
-        WHERE username = 'abby';
+        WHERE username = '$username';
                 
     ");
 
@@ -23,6 +23,6 @@ function getUserBalance($connection){
 
 }
 
-getUserBalance($connection);
+getUserBalance($connection,$_GET['username']);
 
 ?>
