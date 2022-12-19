@@ -64,7 +64,7 @@ let transactionCount = 0;
 
 function checkIfTransactionExist(){
 
-  if(transactionCount == 0){
+  if(transactionCount == 1){
     const noTransactionNotify = document.getElementById('no-transaction-notify');
     noTransactionNotify.remove();
     transactionCount++;
@@ -393,6 +393,8 @@ const getHistory = (username) =>{
     }
   });
 }
+
+
 getBalance(dataFromSession);
 
 // dataFromSession == username
