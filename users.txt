@@ -1,0 +1,15 @@
+===Database wallet
+
+== Table structure for table users
+
+|------
+|Column|Type|Null|Default
+|------
+|//**id**//|int(11)|No|
+|username|varchar(255)|No|
+|email|varchar(255)|No|
+|password|varchar(255)|No|
+== Dumping data for table users
+
+|1|felix|felix@gmail.com|pelikse
+|2|admin|admin@gmail.com|admin
