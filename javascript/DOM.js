@@ -154,22 +154,44 @@ function getForm(){
   }
 }
 
+const category_string = 
+  ['shopping',
+   'income',
+    'fun',
+    'education',
+    'bills',
+    'transport',
+    'health',
+    'others',
+    'savings',
+    'food',
+    'rent',
+    'e-wallet'
+  ];
 
 function calculateCurrentBalance(){
 
   const currentBalance = document.getElementById('current-balance');
   let form = document.getElementById('inputAmount');
 
-  let currentBalanceValue = parseFloat(currentBalance.innerText.replace(/Rp|\.|,|\s/g, ""));
-  
+  //let currentBalanceValue = parseFloat(currentBalance.innerText.replace(/Rp|\.|,|\s/g, ""));
+  let currentBalanceValue = parseFloat(getBalanceFromDiv().replace(/Rp|\.|,|\s/g, ""));
+
   let amount = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
-  if(tempIndex == 1){
+
+  if(tempIndex == 1 || tempIndex == 8){
+
     currentBalanceValue += amount;
+    addToHistory('abby',amount,category_string[tempIndex]);
+    updateBalance(currentBalanceValue);
   }
   else{
     currentBalanceValue -= amount;
+    addToHistory('abby',amount,category_string[tempIndex]);
+    updateBalance(currentBalanceValue);
 
   }
+
   console.log('recent transaction = ', amount);
   console.log('current balance = ',currentBalanceValue);
 
@@ -177,9 +199,6 @@ function calculateCurrentBalance(){
 
   currentBalance.innerText = "";
   currentBalance.innerText = formattedNum.toString();
-  // style="font-size:50pt;"
-
-  
 }
 
 function formatNum(value){
@@ -187,6 +206,119 @@ function formatNum(value){
   return formattedNum;
 
 }
+
+
+const _getUserBalance = ()=>{
+    let serverRequest = new XMLHttpRequest();
+    const currentBalance = document.getElementById("current-balance");
+
+    
+    serverRequest.open('GET',"javascript/getUserBalance.php");
+    serverRequest.responseType = "text";
+    serverRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+    
+    
+
+    serverRequest.onload = function(){
+    
+      if(serverRequest.readyState == 4 && serverRequest.status == 200){
+
+        currentBalance.innerHTML = serverRequest.response;
+        
+        //console.log("connection success");
+        //console.log(currentBalance.innerText);
+        
+        return currentBalance.innerText;
+      }
+      else{
+        console.log("connection error",serverRequest.status);
+      }
+      
+    }
+
+    
+    serverRequest.send();
+    
+    
+    
+    
+}
+
+const getBalance = ()=>{
+
+  const currentBalance = document.getElementById("current-balance");
+  //let value;
+  $.ajax({
+    url: 'javascript/getUserBalance.php',
+    type: 'GET',
+    success: (response) => {
+
+      currentBalance.innerText = response;
+      //console.log("succesfully retreive user balance:", response);
+      //return(currentBalance.innerText);
+      //value = response;
+    }
+  });
+
+  //return(current);
+}
+
+const updateBalance = (transaction) => {
+  $.ajax({
+    url: 'javascript/updateBalance.php',
+    type: 'POST',
+    data:{
+      data1:transaction
+    },
+    success: (response) => {
+      console.log("succesfully update user balance:",response,"\n");
+      getBalance();
+      //return(response);
+    }
+  });
+}
+
+const getBalanceFromDiv=()=>{
+  const currentBalance = document.getElementById("current-balance");
+  return(currentBalance.innerText);
+}
+
+const addToHistory = (username,transaction_amount,category) =>{
+  $.ajax({
+    url: 'javascript/addHistory.php',
+    type: 'POST',
+    data:{
+      username:username,
+      transaction_amount:transaction_amount,
+      category:category
+    },
+    success: (response) => {
+      console.log(response);
+    }
+  });
+}
+
+const getHistory = () =>{
+  $.ajax({
+    url: 'javascript/getHistory.php',
+    type: 'GET',
+    success: (response) => {
+
+      
+      
+    }
+  });
+}
+getBalance();
+//addToHistory('admin',12000,'transport');
+
+//const sementara = getBalance();
+//updateBalance(25000);
+
+
+
+
 
 
 

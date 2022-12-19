@@ -14,7 +14,7 @@
                     console.log('username found ')
 
                     </script>";
-            echo "<script>window.location = 'home.php'</script>";
+            echo "<script>window.location = 'home.html'</script>";
 
             
         }
@@ -26,7 +26,7 @@
 
             </script>";
 
-            echo "<script>window.location = 'index.php';
+            echo "<script>window.location = 'index.html';
             alert('username not found');
                 </script>";
 

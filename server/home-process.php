@@ -75,8 +75,8 @@ if(isset($_GET['input-amount']) && isset($_GET['addButton'])){
     addNewTransaction();
     window.location = 'home.php';
     </script>"; */
-    
-    echo "<script>window.location = 'home.php'</script>";
+
+    //echo "<script>window.location = 'home.php'</script>";
     
     //echo "<script>window.location.reload()</script>";
     
