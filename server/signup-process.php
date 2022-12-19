@@ -11,7 +11,7 @@ function isExist($user,$connection){
 
         
 
-        echo "<script>window.location = 'signup.html';alert('user already exist');</script>";
+        echo "<script>window.location = '/project/uas/signup.html';alert('user already exist');</script>";
 
     }
 }
@@ -23,7 +23,7 @@ function checkIfMatch($password,$confirm){
         echo "
         <script>alert('password not match, try again')</script>
         ";
-        echo "<script>window.location = 'signup.html';</script>";
+        echo "<script>window.location = '/project/uas/signup.html';</script>";
 
 
         if(isset($_GET['create-password']) && $_GET['confirm-password']){
@@ -58,7 +58,7 @@ if(isset($_GET['username']) && isset($_GET['create-password']) && $_GET['confirm
         echo "
         <script>alert('account created')</script>
         ";
-        echo "<script>window.location = 'home.html';</script>";
+        echo "<script>window.location = '/project/uas/home.html';</script>";
 
     }
 

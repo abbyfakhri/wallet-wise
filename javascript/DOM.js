@@ -215,7 +215,7 @@ const _getUserBalance = ()=>{
     const currentBalance = document.getElementById("current-balance");
 
     
-    serverRequest.open('GET',"javascript/getUserBalance.php");
+    serverRequest.open('GET',"server/getUserBalance.php");
     serverRequest.responseType = "text";
     serverRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     
@@ -252,7 +252,7 @@ const getBalance = ()=>{
   const currentBalance = document.getElementById("current-balance");
   //let value;
   $.ajax({
-    url: 'javascript/getUserBalance.php',
+    url: 'server/getUserBalance.php',
     type: 'GET',
     success: (response) => {
 
@@ -268,7 +268,7 @@ const getBalance = ()=>{
 
 const updateBalance = (transaction) => {
   $.ajax({
-    url: 'javascript/updateBalance.php',
+    url: 'server/updateBalance.php',
     type: 'POST',
     data:{
       data1:transaction
@@ -288,7 +288,7 @@ const getBalanceFromDiv=()=>{
 
 const addToHistory = (username,transaction_amount,category) =>{
   $.ajax({
-    url: 'javascript/addHistory.php',
+    url: 'server/addHistory.php',
     type: 'POST',
     data:{
       username:username,
@@ -311,7 +311,7 @@ const getHistory = (username) =>{
   
 
   $.ajax({
-    url: 'javascript/getHistory.php',
+    url: 'server/getHistory.php',
     type: 'GET',
     data:{
       username:username

@@ -9,6 +9,6 @@ $_GET['password'] = '';
 
     
     echo "<script>console.log('logout succesfully')</script>";
-    echo "<script>window.location = 'index.php'</script>";
+    echo "<script>window.location = '/project/uas/index.html'</script>";
 
 mysqli_close($connection);

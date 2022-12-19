@@ -14,7 +14,7 @@
                     console.log('username found ')
 
                     </script>";
-            echo "<script>window.location = 'home.html'</script>";
+            echo "<script>window.location = '/project/uas/home.html'</script>";
 
             
         }
@@ -26,7 +26,7 @@
 
             </script>";
 
-            echo "<script>window.location = 'index.html';
+            echo "<script>window.location = '/project/uas/index.html';
             alert('username not found');
                 </script>";
 
