@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once('connection.php');
 
-$username = $_GET['username'];
+$username = $_SESSION['username'];
 $redirect = 'edit_profile.php';
 
 if (isset($_POST['ganti']))

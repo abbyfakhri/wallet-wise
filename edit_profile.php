@@ -83,7 +83,7 @@
 
                 <div class="container">
                     <button class="login-button">
-                        <input type="submit" name="" value="Save" style ="color:white; text-decoration: none; background-color:inherit;border:none">
+                        <input type="ganti" name="" value="Save" style ="color:white; text-decoration: none; background-color:inherit;border:none">
                     </button>
                 </div>
                 <div class="container">
