@@ -209,7 +209,7 @@ function formatNum(value){
 
 }
 
-
+/* 
 const _getUserBalance = ()=>{
     let serverRequest = new XMLHttpRequest();
     const currentBalance = document.getElementById("current-balance");
@@ -246,7 +246,7 @@ const _getUserBalance = ()=>{
     
     
 }
-
+ */
 const getBalance = ()=>{
 
   const currentBalance = document.getElementById("current-balance");
@@ -338,17 +338,29 @@ const getHistory = (username) =>{
       let cleanIconData = iconData.filter(value => value);
       //let index = 0;
 
-      let iconDataIndex = [];
+      let iconDataIndex = [0];
 
-      for(let i =0;i<iconData.length;i++){
-        for(let j = 0;j<category_string.length;j++){
-            if(iconData[i] == category_string[j]){
-              iconDataIndex[i] = j; 
-            }
-        }
+      for(let i = 0;i<cleanIconData.length;i++){
+
+       
+            
+            iconDataIndex[i] = category_string.indexOf(cleanIconData[i])+1;
+            
+            //console.log(iconDataIndex[i]);
+            
+        
+
       }
 
       let cleanIconIndex = iconDataIndex.filter(value => value);
+
+      /* // debug
+      console.log(cleanAmount);
+      console.log(cleanIconData);
+      console.log(cleanIconIndex);
+      console.log(iconData);
+      console.log(cleanIconIndex); */
+
       for(let i=0; i<amount.length; i++) {
 
         const newDiv = document.createElement("div");
@@ -359,28 +371,19 @@ const getHistory = (username) =>{
         newDiv.classList.add('centered');
         newDivIcon.classList.add('centered');
         //let icon = cleanIconIndex[i].cloneNode(true);
+        let format = formatNum(cleanAmount[i]);
+        newDiv.innerHTML = "<h4>"+format+"</h4>";
 
-        newDiv.innerHTML = "<h4>"+cleanAmount[i]+"</h4>";
-
-        newDivIcon.appendChild(iconSource[cleanIconIndex[i]].cloneNode(true));
+        newDivIcon.appendChild(iconSource[cleanIconIndex[i]-1].cloneNode(true));
         newDiv.appendChild(newDivIcon);
         divDestination.appendChild(newDiv);
 
-          
-
-              //icon = iconSource[i].cloneNode(true);
-              //return;
-          
-
-          
-          
+        
       }
 
     
       
-      console.log(cleanAmount);
-      console.log(cleanIconData);
-      console.log(cleanIconIndex);
+      
        
       
     }
@@ -388,7 +391,7 @@ const getHistory = (username) =>{
 }
 getBalance();
 
-getHistory('admin');
+getHistory('abby');
 
 
 
