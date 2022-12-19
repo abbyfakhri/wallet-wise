@@ -29,7 +29,7 @@ require_once('connection.php');
                     <img src="assets/bibi.png" alt="" style="width:160px;height:160px;border-radius: 50%;">
                 </div>
                 
-                <h3>Hello, <?php echo $_SESSION['username']; ?></h3>
+                <h2>Hello, <?php echo $_SESSION['username']; ?></h2>
                 <div>
                 <div class="container">
                 <button class="login-button" >

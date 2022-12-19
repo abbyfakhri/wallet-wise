@@ -3,7 +3,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$db = "wallet";
+$db = "wwise";
  
 $conn = mysqli_connect($server, $user, $pass, $db);
  

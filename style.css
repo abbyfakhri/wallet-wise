@@ -9,6 +9,11 @@ h1{
     font-size:5rem;
 }
 
+h2{
+    font-family: 'Berkshire Swash';
+    color: #483884;
+}
+
 h3{
     font-family: 'Berkshire Swash', cursive;
     color: #483884;

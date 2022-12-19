@@ -5,7 +5,7 @@ require_once('connection.php');
 $username = $_SESSION['username'];
 $redirect = 'edit_profile.php';
 
-if (isset($_POST['ganti']))
+if (isset($_POST['submit']))
 {
     $paslam = $_POST['paslam'];
     $pasnew = $_POST['pasnew'];

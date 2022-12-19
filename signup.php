@@ -1,46 +1,3 @@
-<?php 
- 
-include 'config.php';
- 
-error_reporting(0);
- 
-session_start();
- 
-if (isset($_SESSION['username'])) {
-    header("Location: index.php");
-}
- 
-if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $cpassword = $_POST['cpassword'];
- 
-    if ($password == $cpassword) {
-        $sql = "SELECT * FROM users WHERE username='$username'";
-        $result = mysqli_query($conn, $sql);
-        if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO users (username,  password)
-                    VALUES ('$username','$password')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                echo "<script>alert('Selamat, registrasi berhasil!')</script>";
-                $username = "";
-                $_POST['password'] = "";
-                $_POST['cpassword'] = "";
-            } else {
-                echo "<script>alert('Woops! Terjadi kesalahan.')</script>";
-            }
-        } else {
-            echo "<script>alert('Woops! Email Sudah Terdaftar.')</script>";
-        }
-         
-    } else {
-        echo "<script>alert('Password Tidak Sesuai')</script>";
-    }
-}
- 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,10 +12,10 @@ if (isset($_POST['submit'])) {
 </head>
 <body style="background-color: rgba(186,180,214,255);">
     
-
+<?php include 'signup_proses.php';?>
 
     <div class = "container">
-        <img src="/wallet.jpg" alt="" style="width:50%" class = "bg-image">
+        <img src="wallet.jpg" alt="" style="width:50%" class = "bg-image">
 
         <div class = "login-form">
         <div>
@@ -68,7 +25,7 @@ if (isset($_POST['submit'])) {
                 <!-- <h2 style="color: white; text-align:center; font-size:30px; padding-bottom: 15px;">Hello There!</h2> -->
                 <h3 style="font-size:25px; text-align:center; padding-bottom: 20px; color:#726099">Your future self will thank you <br>for every dollar you save today.</h3>
 
-                <form action="" method="post">
+            <form action="" method="post">
                 <div id="username" class="forms container">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
@@ -77,7 +34,7 @@ if (isset($_POST['submit'])) {
                     <div>
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="email or username" style= "text-align: center;" class = "textbox" required>
+                              <input type="text" name="username" id="name" placeholder ="email or username" style= "text-align: center;" class = "textbox" required>
                         </div>
                     
 
@@ -96,7 +53,7 @@ if (isset($_POST['submit'])) {
 
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="password" style= "text-align: center;" class = "textbox" required>
+                              <input type="text" name="password" id="name" placeholder ="password" style= "text-align: center;" class = "textbox" required>
                             
                             </div>
                     
@@ -118,7 +75,7 @@ if (isset($_POST['submit'])) {
 
                             <div >
                               
-                              <input type="text" name="name" id="name" placeholder ="confirm password" style= "text-align: center;" class = "textbox" required>
+                              <input type="text" name="cpassword" id="name" placeholder ="confirm password" style= "text-align: center;" class = "textbox" required>
                             
                             </div>
                     
@@ -135,10 +92,10 @@ if (isset($_POST['submit'])) {
             
 
                 <div class="container">
-                    <button class="login-button">
-                        <a href="*" style ="color:white; text-decoration: none;">Sign Up</a>
+                <button name="submits" class="login-button" style ="color:white; text-decoration: none;" >Sign Up
                     </button>
                 </div>
+</form>    
 
                 <h3 style="text-align:center; font-size:20px;color:#726099;padding:20px">already have an account?, 
                    <a href="index.php" style="color:#726099">click here to login</a> </h3>
