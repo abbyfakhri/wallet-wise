@@ -134,6 +134,7 @@ padding:20px;
     box-shadow: 10px 10px 20px rgb(71, 67, 67);
     width: 100%;
     border-radius: 20px;
+    
 }
 
 
@@ -145,6 +146,7 @@ padding:20px;
     padding: 5px;
     text-align: center;
     color: #483884;
+    font-size:16pt
 }
 
 .category-icon{

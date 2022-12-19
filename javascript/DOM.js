@@ -169,6 +169,8 @@ const category_string =
     'e-wallet'
   ];
 
+  
+
 function calculateCurrentBalance(){
 
   const currentBalance = document.getElementById('current-balance');
@@ -299,22 +301,96 @@ const addToHistory = (username,transaction_amount,category) =>{
   });
 }
 
-const getHistory = () =>{
+
+
+const getHistory = (username) =>{
+
+  
+  //let icon= iconSource[2].cloneNode(true);
+  checkIfTransactionExist();
+  
+
   $.ajax({
     url: 'javascript/getHistory.php',
     type: 'GET',
+    data:{
+      username:username
+    },
     success: (response) => {
 
+      let data = JSON.parse(response);
+
+      let amount = [];
+      let iconData = [];
       
+      for(let i=0; i<data.length; i++) {
+        if(!isNaN(data[i])){
+          amount[i] = parseInt(data[i]);
+          //console.log(amount[i]);
+        }
+        else{
+          iconData[i] = data[i];
+          //console.log(iconData[i]);
+        }
+      }
+
+      let cleanAmount = amount.filter(value => value);
+      let cleanIconData = iconData.filter(value => value);
+      //let index = 0;
+
+      let iconDataIndex = [];
+
+      for(let i =0;i<iconData.length;i++){
+        for(let j = 0;j<category_string.length;j++){
+            if(iconData[i] == category_string[j]){
+              iconDataIndex[i] = j; 
+            }
+        }
+      }
+
+      let cleanIconIndex = iconDataIndex.filter(value => value);
+      for(let i=0; i<amount.length; i++) {
+
+        const newDiv = document.createElement("div");
+        let newDivIcon = document.createElement("div");
+        const divDestination = document.getElementById('recent-transactions-contentbox');
+
+        newDiv.classList.add('transaction-box');
+        newDiv.classList.add('centered');
+        newDivIcon.classList.add('centered');
+        //let icon = cleanIconIndex[i].cloneNode(true);
+
+        newDiv.innerHTML = "<h4>"+cleanAmount[i]+"</h4>";
+
+        newDivIcon.appendChild(iconSource[cleanIconIndex[i]].cloneNode(true));
+        newDiv.appendChild(newDivIcon);
+        divDestination.appendChild(newDiv);
+
+          
+
+              //icon = iconSource[i].cloneNode(true);
+              //return;
+          
+
+          
+          
+      }
+
+    
+      
+      console.log(cleanAmount);
+      console.log(cleanIconData);
+      console.log(cleanIconIndex);
+       
       
     }
   });
 }
 getBalance();
-//addToHistory('admin',12000,'transport');
 
-//const sementara = getBalance();
-//updateBalance(25000);
+getHistory('admin');
+
+
 
 
 
