@@ -8,6 +8,10 @@ h1{
     font-size:5rem;
 }
 
+body::-webkit-scrollbar { 
+    display: none;  
+}
+
 
 
 .bg-image:hover{
@@ -55,6 +59,8 @@ h1{
     margin:10px;
 
     border: none;
+    color:white; 
+    text-decoration: none;
 }
 
 .google-btn{

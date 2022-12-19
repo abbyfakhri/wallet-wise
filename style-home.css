@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Candal&display=swap');
 
 body{
     margin: 20px;
+    user-select: none;
+    background-image: url("/project/uas/assets/bg58.png");
+    background-attachment: fixed;
+
+    background-size: cover;
+    background-position: center;
+    padding-bottom:20px;
     
-
-
+}
+body::-webkit-scrollbar { 
+    display: none;  
 }
 
 .header{
@@ -16,34 +25,33 @@ body{
 }
  
 .balance-box{
-background-color: #5f4f99;
+background-color: rgb(94, 78, 153,.8);
 height:120px;
 border-radius: 20px;
 padding:20px;
+
 }
 
+
 .balance-text{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Candal', sans-serif;
     color: white;
     font-size: 15pt;
+    
 }
 
 .balance-container{
     display:flex;
     align-items:center;
     justify-content: space-between;
+
 }
 
 
-.user-profile{
-    
-}
-.user-profile:hover{
-    transform: scale(1.1);
-    transition: transform 500ms ease-in-out;
-}
+
 
 .add-btn{
+    color: red;
     
 }
 
@@ -62,6 +70,8 @@ padding:20px;
     font-family: 'Montserrat', sans-serif;
     font-size: 15pt;
     text-align: center;
+    box-shadow: 10px 10px 20px rgb(71, 67, 67);
+    background-color: rgba(235, 231, 239, 0.8);
 }
 
 .centered{
@@ -71,56 +81,121 @@ padding:20px;
     padding-right:15px;
 }
 
-.category-btn:hover{
-    transform: scale(1.1);
-    transition: transform 500ms ease-in-out;
-}
+
 
 .category-box{
-    background-color:white;
+    background-color:rgba(235, 231, 239, 0.8);
     width:500px;
-    height:300px;
+    height:auto;
     padding:20px;
-    margin-top:10px;
+   
     border-radius: 20px;
     font-family: 'Montserrat', sans-serif;
+    box-shadow: 10px 10px 20px rgb(71, 67, 67);
 
+    
+
+}
+
+.category-box-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight:bolder;
+    background-color:rgba(235, 231, 239, 0.8);
+    box-shadow: 10px 10px 20px rgb(71, 67, 67);
+    width:500px;
+    height:auto;
+    padding: 10px;
+    border-radius:20px;
+    text-align: center;
+    color:#483884;
+    font-size: 15pt;
+    
 }
 
 
 
 .recent-transactions-titlebox{
     font-family: 'Montserrat', sans-serif;
-    margin: 20px;
-    padding:20px;
-    background-color: #483884;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
+    background-color: rgb(94, 78, 153,.8);
+    box-shadow: 10px 10px 20px rgb(71, 67, 67);
+    width:auto;
+    height:auto;
+    padding: 20px;
+    border-radius:20px;
+    text-align: center;
+    color:#483884;
+    font-size: 15pt;
 }
 
 .recent-transactions-contentbox{
     font-family: 'Montserrat', sans-serif;
-    margin: 20px;
     padding:20px;
-    background-color: #7062a0;
+    background-color: rgb(94, 78, 153,.8);
+    box-shadow: 10px 10px 20px rgb(71, 67, 67);
     width: 100%;
     border-radius: 20px;
+    
 }
 
+
 .transaction-box{
-    background-color:white;
+    background-color:rgb(255, 255, 255,.8);
     width:90%;
     margin: 20px;
     border-radius: 20px;
     padding: 5px;
     text-align: center;
     color: #483884;
+    font-size:16pt
 }
 
 .category-icon{
     
     border-radius: 10px;
     padding: 5px;
+    user-select: none;
+}
+
+.category-icon:hover{
+    
+    border: 2px solid #7062a0;
+    transition: border 200ms ease-in-out;
+  
+    
+}
+
+.icons{
+    user-select: none;
+}
+
+.dropdown-content{
+   display: none; 
+   background-color:rgb(255, 255, 255,0.5);
+   width:90px;
+   height:auto;
+   padding: 10px;
+   margin: 5px;
+   position:absolute;
+   border-radius: 20px;
+   font-family: 'Montserrat', sans-serif;
+
+   
+}
+
+.dropdown-content a{
+    color:#483884;
+}
+.user-profile{
+    position:relative;
+}
+
+.user-profile:hover{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+}
+.user-profile:hover .dropdown-content{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+    display:block;
 }
 

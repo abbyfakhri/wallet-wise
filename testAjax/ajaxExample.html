@@ -1,0 +1,36 @@
+<button id="button1">Send request 1</button>
+<button id="button2">Send request 2</button>
+
+<script>
+  // Get a reference to the button elements
+  var button1 = document.getElementById('button1');
+  var button2 = document.getElementById('button2');
+
+  // Attach event listeners to the buttons
+  button1.addEventListener('click', function() {
+    // Send an HTTP request using the $.ajax method
+    $.ajax({
+      url: 'example1.php',
+      type: 'POST',
+      data: {
+        message: 'Hello, World!'
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    });
+  });
+  button2.addEventListener('click', function() {
+    // Send another HTTP request using the $.ajax method
+    $.ajax({
+      url: 'example2.php',
+      type: 'POST',
+      data: {
+        message: 'Hello, World!'
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    });
+  });
+</script>
