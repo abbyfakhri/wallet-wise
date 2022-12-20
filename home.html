@@ -75,211 +75,215 @@
 
     <br>
 
-    <div id="content" class="centered">
+    <div id="content" class="centered-main">
 
-        <div id="add-spend">
+        <div class = "centered-content">
 
-            <div class="category-box-title">
-                <h3>pick your category</h3>
+            <div id="add-spend" class = "add-spend-box">
+
+                <div class="category-box-title">
+                    <h3>pick your category</h3>
+                </div>
+    
+                <br>
+    
+                <div id="category-box" class="category-box">
+                    <div id="iconBox" class="centered">
+    
+                        <div class="category-icon" onclick=changeColor(0)>
+                            <div class="centered " style="margin-bottom:5px">
+    
+    
+                                <img src="/project/uas/assets/shopping.png" style="width:40px" alt="">
+                            </div>
+    
+                            <p style="text-align:center">shopping</p>
+                        </div>
+    
+    
+                        <div class="category-icon" onclick=changeColor(1)>
+                            <div class="centered " style="margin-bottom:5px">
+    
+                                <img src="/project/uas//assets/money.png" style="width:40px" alt="">
+                            </div>
+    
+                            <p style="text-align:center">income</p>
+                        </div>
+    
+                        <div class="category-icon">
+    
+                            <div class="centered " style="margin-bottom:5px" onclick=changeColor(2)>
+    
+    
+                                <img src="/project/uas//assets/party.png" style="width:40px" alt="">
+                            </div>
+    
+    
+                            <p style="text-align:center">fun</p>
+                        </div>
+    
+    
+                    </div>
+    
+                    <div id="second-row" class="centered">
+    
+                        <div class="category-icon" onclick=changeColor(3)>
+                            <div class="centered " style="margin-bottom:5px">
+    
+                                <img src="/project/uas//assets/education.png" style="width:40px" alt="">
+                            </div>
+    
+                            <p style="text-align:center">education</p>
+                        </div>
+    
+    
+                        <div class="category-icon" onclick=changeColor(4)>
+                            <div class="centered " style="margin-bottom:5px">
+    
+                                >
+                                <img src="/project/uas//assets/bills.png" style="width:40px" alt="">
+    
+                            </div>
+    
+                            <p style="text-align:center">bills</p>
+                        </div>
+    
+                        <div class="category-icon">
+    
+                            <div class="centered " style="margin-bottom:5px" onclick=changeColor(5)>
+    
+    
+                                <img src="/project/uas//assets/car.png" style="width:40px" alt="">
+                            </div>
+    
+    
+                            <p style="text-align:center">transport</p>
+                        </div>
+    
+                    </div>
+    
+                    <div id="third-row" class="centered">
+                        <div class="category-icon" onclick=changeColor(6)>
+                            <div class="centered " style="margin-bottom:5px" onclick=changeColor(5)>
+    
+    
+                                <img src="/project/uas//assets/health.png" style="width:40px" alt="">
+                            </div>
+    
+    
+                            <p style="text-align:center">health</p>
+                        </div>
+    
+    
+                        <div class="category-icon" onclick=changeColor(7)>
+                            <div class="centered " style="margin-bottom:5px">
+    
+                                <img src="/project/uas//assets/other.png" style="width:30px" alt="">
+                            </div>
+    
+                            <p style="text-align:center">others</p>
+                        </div>
+    
+                        <div class="category-icon">
+    
+                            <div class="centered " style="margin-bottom:5px" onclick=changeColor(8)>
+    
+                                <img src="/project/uas//assets/savings.png" style="width:40px" alt="">
+                            </div>
+    
+    
+                            <p style="text-align:center">savings</p>
+                        </div>
+    
+                    </div>
+    
+                    <div id="third-row" class="centered">
+                        <div class="category-icon" onclick=changeColor(9)>
+                            <div class="centered " style="margin-bottom:5px" onclick=changeColor(5)>
+                                <img src="/project/uas//assets/food1.png" style="height:40px" alt="">
+                            </div>
+    
+    
+                            <p style="text-align:center">food</p>
+                        </div>
+    
+    
+                        <div class="category-icon" onclick=changeColor(10)>
+    
+                            <img src="/project/uas//assets/house.png" style="width:40px" alt="">
+    
+                            <p style="text-align:center">rent</p>
+                        </div>
+    
+                        <div class="category-icon">
+    
+                            <div class="centered " style="margin-bottom:5px" onclick=changeColor(11)>
+    
+                                <img src="/project/uas//assets/wallet.png" style="width:40px" alt="">
+                            </div>
+    
+    
+                            <p style="text-align:center">e-wallet</p>
+                        </div>
+    
+                    </div>
+                </div>
+    
+    
+                <br>
+    
+                <div id="addSpend" class="addSpend-box">
+    
+    
+                    <form action="" method="get">
+    
+    
+    
+    
+                        <input type="text" name="input-amount" id="inputAmount" placeholder="input your spend amount" class="textbox"
+                            required>
+    
+    
+                    
+    
+                    <script>
+                    let form = document.getElementById('inputAmount');
+    
+                    form.addEventListener("input", () => {
+    
+                        if (form.value.length == 0) {
+                            form.value = 0;
+                        }
+    
+                        let num = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
+    
+                        if (isNaN == true) {
+                            form.value = 0;
+                        }
+    
+                        let formattedNum = new Intl.NumberFormat().format(num);
+    
+                        form.value = formattedNum;
+    
+    
+    
+                    });
+                    </script>
+                </div>
+    
+    
             </div>
-
-            <br>
-
-            <div id="category-box" class="category-box">
-                <div id="iconBox" class="centered">
-
-                    <div class="category-icon" onclick=changeColor(0)>
-                        <div class="centered " style="margin-bottom:5px">
-
-
-                            <img src="/project/uas/assets/shopping.png" style="width:40px" alt="">
-                        </div>
-
-                        <p style="text-align:center">shopping</p>
-                    </div>
-
-
-                    <div class="category-icon" onclick=changeColor(1)>
-                        <div class="centered " style="margin-bottom:5px">
-
-                            <img src="/project/uas//assets/money.png" style="width:40px" alt="">
-                        </div>
-
-                        <p style="text-align:center">income</p>
-                    </div>
-
-                    <div class="category-icon">
-
-                        <div class="centered " style="margin-bottom:5px" onclick=changeColor(2)>
-
-
-                            <img src="/project/uas//assets/party.png" style="width:40px" alt="">
-                        </div>
-
-
-                        <p style="text-align:center">fun</p>
-                    </div>
-
-
-                </div>
-
-                <div id="second-row" class="centered">
-
-                    <div class="category-icon" onclick=changeColor(3)>
-                        <div class="centered " style="margin-bottom:5px">
-
-                            <img src="/project/uas//assets/education.png" style="width:40px" alt="">
-                        </div>
-
-                        <p style="text-align:center">education</p>
-                    </div>
-
-
-                    <div class="category-icon" onclick=changeColor(4)>
-                        <div class="centered " style="margin-bottom:5px">
-
-                            >
-                            <img src="/project/uas//assets/bills.png" style="width:40px" alt="">
-
-                        </div>
-
-                        <p style="text-align:center">bills</p>
-                    </div>
-
-                    <div class="category-icon">
-
-                        <div class="centered " style="margin-bottom:5px" onclick=changeColor(5)>
-
-
-                            <img src="/project/uas//assets/car.png" style="width:40px" alt="">
-                        </div>
-
-
-                        <p style="text-align:center">transport</p>
-                    </div>
-
-                </div>
-
-                <div id="third-row" class="centered">
-                    <div class="category-icon" onclick=changeColor(6)>
-                        <div class="centered " style="margin-bottom:5px" onclick=changeColor(5)>
-
-
-                            <img src="/project/uas//assets/health.png" style="width:40px" alt="">
-                        </div>
-
-
-                        <p style="text-align:center">health</p>
-                    </div>
-
-
-                    <div class="category-icon" onclick=changeColor(7)>
-                        <div class="centered " style="margin-bottom:5px">
-
-                            <img src="/project/uas//assets/other.png" style="width:30px" alt="">
-                        </div>
-
-                        <p style="text-align:center">others</p>
-                    </div>
-
-                    <div class="category-icon">
-
-                        <div class="centered " style="margin-bottom:5px" onclick=changeColor(8)>
-
-                            <img src="/project/uas//assets/savings.png" style="width:40px" alt="">
-                        </div>
-
-
-                        <p style="text-align:center">savings</p>
-                    </div>
-
-                </div>
-
-                <div id="third-row" class="centered">
-                    <div class="category-icon" onclick=changeColor(9)>
-                        <div class="centered " style="margin-bottom:5px" onclick=changeColor(5)>
-                            <img src="/project/uas//assets/food1.png" style="height:40px" alt="">
-                        </div>
-
-
-                        <p style="text-align:center">food</p>
-                    </div>
-
-
-                    <div class="category-icon" onclick=changeColor(10)>
-
-                        <img src="/project/uas//assets/house.png" style="width:40px" alt="">
-
-                        <p style="text-align:center">rent</p>
-                    </div>
-
-                    <div class="category-icon">
-
-                        <div class="centered " style="margin-bottom:5px" onclick=changeColor(11)>
-
-                            <img src="/project/uas//assets/wallet.png" style="width:40px" alt="">
-                        </div>
-
-
-                        <p style="text-align:center">e-wallet</p>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <br>
-
-            <div id="addSpend" class="addSpend-box">
-
-
-                <form action="" method="get">
-
-
-
-
-                    <input type="text" name="input-amount" id="inputAmount" placeholder="input your spend amount" class="textbox"
-                        required>
-
-
-                
-
-                <script>
-                let form = document.getElementById('inputAmount');
-
-                form.addEventListener("input", () => {
-
-                    if (form.value.length == 0) {
-                        form.value = 0;
-                    }
-
-                    let num = parseFloat(form.value.replace(/Rp|\.|,|\s/g, ""));
-
-                    if (isNaN == true) {
-                        form.value = 0;
-                    }
-
-                    let formattedNum = new Intl.NumberFormat().format(num);
-
-                    form.value = formattedNum;
-
-
-
-                });
-                </script>
+            
+            
+            <div id = "addButton" class = "add-new-transaction-btn" onclick = addNewTransaction()>
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="white"  class="bi bi-patch-plus-fill add-btn" viewBox="0 0 16 16">
+                    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
+                </svg>
             </div>
 
 
         </div>
-        
-        
-        <div id = "addButton" class = "add-new-transaction-btn" onclick = addNewTransaction()>
-            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="white"  class="bi bi-patch-plus-fill add-btn" viewBox="0 0 16 16">
-                <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
-            </svg>
-        </div>
-        
-        
+
 
         </form>
 
