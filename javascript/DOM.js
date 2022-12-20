@@ -62,26 +62,45 @@ let iconSource = getIconSource();
 
 let transactionCount = 0;
 
-function checkIfTransactionExist(){
+/* function tete(){
 
-  if(transactionCount == 1){
+  if(transactionCount > 1){
     const noTransactionNotify = document.getElementById('no-transaction-notify');
     noTransactionNotify.remove();
     transactionCount++;
   }
   
-}
+} */
 
+/* const checkIfTransactionExist = (username)=>{
+
+  const noTransactionNotify = document.getElementById('no-transaction-notify');
+  $.ajax({
+    url: 'server/checkIfTransactionExist.php',
+    type: 'GET',
+    data:{
+      username:username
+    },
+    success: (response) => {
+
+     
+        noTransactionNotify.remove();
+      
+    }
+  });
+
+} */
     
 function addNewTransaction(){
   if(addNewDivToggle){
 
-    checkIfTransactionExist();
+    //checkIfTransactionExist(dataFromSession);
     const newDiv = document.createElement("div");
     let newDivIcon = document.createElement("div");
     const divDestination = document.getElementById('recent-transactions-contentbox')
     const form = document.getElementById('inputAmount');
-    
+    const noTransactionNotify = document.getElementById('no-transaction-notify');
+
     newDiv.classList.add('transaction-box');
     newDiv.classList.add('centered');
 
@@ -90,6 +109,8 @@ function addNewTransaction(){
    
     if(getForm().length > 22){
 
+      //noTransactionNotify.style.display = "none";
+
       newDiv.innerHTML = getForm();
       
       let icon = iconSource[getIconIndex()].cloneNode(true);
@@ -97,9 +118,13 @@ function addNewTransaction(){
       newDivIcon.appendChild(icon);
       
       newDiv.appendChild(newDivIcon);
+
       
-      divDestination.appendChild(newDiv);
       
+      //divDestination.appendChild(newDiv);
+
+      //newDiv.insertBefore(divDestination.firstChild);
+      divDestination.insertBefore(newDiv,divDestination.firstChild);
       console.log("add success");
       calculateCurrentBalance();
 
@@ -194,6 +219,7 @@ function calculateCurrentBalance(){
 
   }
 
+  //calculateCurrentBalance(dataFromSession);
   console.log('recent transaction = ', amount);
   console.log('current balance = ',currentBalanceValue);
 
@@ -209,44 +235,7 @@ function formatNum(value){
 
 }
 
-/* 
-const _getUserBalance = ()=>{
-    let serverRequest = new XMLHttpRequest();
-    const currentBalance = document.getElementById("current-balance");
 
-    
-    serverRequest.open('GET',"server/getUserBalance.php");
-    serverRequest.responseType = "text";
-    serverRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    
-    
-    
-
-    serverRequest.onload = function(){
-    
-      if(serverRequest.readyState == 4 && serverRequest.status == 200){
-
-        currentBalance.innerHTML = serverRequest.response;
-        
-        //console.log("connection success");
-        //console.log(currentBalance.innerText);
-        
-        return currentBalance.innerText;
-      }
-      else{
-        console.log("connection error",serverRequest.status);
-      }
-      
-    }
-
-    
-    serverRequest.send();
-    
-    
-    
-    
-}
- */
 const getBalance = (username)=>{
 
   const currentBalance = document.getElementById("current-balance");
@@ -268,6 +257,8 @@ const getBalance = (username)=>{
 
   //return(current);
 }
+
+
 
 const updateBalance = (transaction,username) => {
   $.ajax({
@@ -309,10 +300,10 @@ const addToHistory = (username,transaction_amount,category) =>{
 
 const getHistory = (username) =>{
 
-  
+  //checkIfTransactionExist(dataFromSession);
   //let icon= iconSource[2].cloneNode(true);
-  checkIfTransactionExist();
-  
+  //checkIfTransactionExist();
+  const noTransactionNotify = document.getElementById('no-transaction-notify');
 
   $.ajax({
     url: 'server/getHistory.php',
@@ -323,6 +314,10 @@ const getHistory = (username) =>{
     success: (response) => {
 
       let data = JSON.parse(response);
+
+      if(data.length > 0) {
+        noTransactionNotify.remove();
+      }
 
       let amount = [];
       let iconData = [];
@@ -340,7 +335,7 @@ const getHistory = (username) =>{
 
       let cleanAmount = amount.filter(value => value);
       let cleanIconData = iconData.filter(value => value);
-      //let index = 0;
+      
 
       let iconDataIndex = [0];
 
@@ -364,6 +359,7 @@ const getHistory = (username) =>{
       console.log(cleanIconIndex);
       console.log(iconData);
       console.log(cleanIconIndex); */
+      
 
       for(let i=0; i<amount.length; i++) {
 
@@ -375,12 +371,28 @@ const getHistory = (username) =>{
         newDiv.classList.add('centered');
         newDivIcon.classList.add('centered');
         //let icon = cleanIconIndex[i].cloneNode(true);
-        let format = formatNum(cleanAmount[i]);
-        newDiv.innerHTML = "<h4>"+format+"</h4>";
 
-        newDivIcon.appendChild(iconSource[cleanIconIndex[i]-1].cloneNode(true));
+        let format = formatNum(cleanAmount[i]);
+
+        if(cleanIconIndex[i]-1 == 1 || cleanIconIndex[i]-1 == 8){
+
+          newDiv.innerHTML = "<h3> + "+format+"</h3>";
+          newDivIcon.appendChild(iconSource[cleanIconIndex[i]-1].cloneNode(true));
+
+
+        }
+
+        else{
+
+          newDiv.innerHTML = "<h3> - "+format+"</h3>";
+          newDivIcon.appendChild(iconSource[cleanIconIndex[i]-1].cloneNode(true));
+
+
+        }
+
         newDiv.appendChild(newDivIcon);
         divDestination.appendChild(newDiv);
+        //newDiv.insertBefore(divDestination.firstChild);
 
         
       }
@@ -399,8 +411,50 @@ getBalance(dataFromSession);
 
 // dataFromSession == username
 const userID = dataFromSession;
+
 getHistory(userID);
 
+
+
+
+
+
+/* 
+const _getUserBalance = ()=>{
+    let serverRequest = new XMLHttpRequest();
+    const currentBalance = document.getElementById("current-balance");
+
+    
+    serverRequest.open('GET',"server/getUserBalance.php");
+    serverRequest.responseType = "text";
+    serverRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+    
+    
+
+    serverRequest.onload = function(){
+    
+      if(serverRequest.readyState == 4 && serverRequest.status == 200){
+
+        currentBalance.innerHTML = serverRequest.response;
+        
+        //console.log("connection success");
+        //console.log(currentBalance.innerText);
+        
+        return currentBalance.innerText;
+      }
+      else{
+        console.log("connection error",serverRequest.status);
+      }
+      
+    }
+
+    
+    serverRequest.send();
+  
+    
+}
+ */
 
 
 

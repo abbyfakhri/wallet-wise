@@ -18,10 +18,25 @@ body::-webkit-scrollbar {
 }
 
 .header{
+
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
     font-family: 'Berkshire Swash', cursive;
     color: #483884;
    
     font-size:3rem;
+}
+
+.welcome{
+    background-color: rgb(255, 255, 255,0.8);
+    width: auto;
+    padding:10px;
+    border-radius: 20px;
+    font-size:16pt;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+
 }
  
 .balance-box{
@@ -146,7 +161,7 @@ padding:20px;
     padding: 5px;
     text-align: center;
     color: #483884;
-    font-size:16pt
+    font-size:20pt
 }
 
 .category-icon{
