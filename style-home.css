@@ -5,11 +5,13 @@
 body{
     margin: 20px;
     user-select: none;
-    background-image: url("/project/uas/assets/bg58.png");
+    /* background-image: url("/project/uas/assets/bg58.png");
     background-attachment: fixed;
 
     background-size: cover;
-    background-position: center;
+    background-position: center; */
+
+    background-color: rgba(186,180,214,255);
     padding-bottom:20px;
     
 }
@@ -18,10 +20,29 @@ body::-webkit-scrollbar {
 }
 
 .header{
+
+    display: flex;
+    justify-content: flex-end;
+    justify-content: space-between;
     font-family: 'Berkshire Swash', cursive;
     color: #483884;
    
     font-size:3rem;
+}
+
+.welcome{
+    /* background-color: rgb(255, 255, 255,0.8); */
+    width: auto;
+    padding:10px;
+    border-radius: 20px;
+    /* font-size:16pt; */
+    /* font-family: 'Montserrat', sans-serif; */
+    font-weight: bolder;
+    font-family: 'Candal', sans-serif;
+    color: white;
+    font-size: 45pt;
+    text-align:right;
+
 }
  
 .balance-box{
@@ -47,11 +68,19 @@ padding:20px;
 
 }
 
+.add-new-transaction-btn{
+    margin:100px;
+}
 
+.add-spend-box{
+    padding:100px;
+    padding-left:0px;
+}
 
 
 .add-btn{
     color: red;
+
     
 }
 
@@ -81,6 +110,22 @@ padding:20px;
     padding-right:15px;
 }
 
+.centered-main{
+    display:flex;
+    align-items:baseline;
+    justify-content: space-evenly;
+    padding-right:15px;
+}
+
+.centered-content{
+
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
 
 
 .category-box{
@@ -92,7 +137,7 @@ padding:20px;
     border-radius: 20px;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 10px 10px 20px rgb(71, 67, 67);
-
+    
     
 
 }
@@ -146,9 +191,13 @@ padding:20px;
     padding: 5px;
     text-align: center;
     color: #483884;
-    font-size:16pt
+    font-size:20pt
 }
 
+.transaction-box:hover{
+    transform: scale(1.1);
+    transition: transform 500ms ease-in-out;
+}
 .category-icon{
     
     border-radius: 10px;

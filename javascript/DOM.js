@@ -62,26 +62,45 @@ let iconSource = getIconSource();
 
 let transactionCount = 0;
 
-function checkIfTransactionExist(){
+/* function tete(){
 
-  if(transactionCount == 0){
+  if(transactionCount > 1){
     const noTransactionNotify = document.getElementById('no-transaction-notify');
     noTransactionNotify.remove();
     transactionCount++;
   }
   
-}
+} */
 
+/* const checkIfTransactionExist = (username)=>{
+
+  const noTransactionNotify = document.getElementById('no-transaction-notify');
+  $.ajax({
+    url: 'server/checkIfTransactionExist.php',
+    type: 'GET',
+    data:{
+      username:username
+    },
+    success: (response) => {
+
+     
+        noTransactionNotify.remove();
+      
+    }
+  });
+
+} */
     
 function addNewTransaction(){
   if(addNewDivToggle){
 
-    checkIfTransactionExist();
+    //checkIfTransactionExist(dataFromSession);
     const newDiv = document.createElement("div");
     let newDivIcon = document.createElement("div");
     const divDestination = document.getElementById('recent-transactions-contentbox')
     const form = document.getElementById('inputAmount');
-    
+    const noTransactionNotify = document.getElementById('no-transaction-notify');
+
     newDiv.classList.add('transaction-box');
     newDiv.classList.add('centered');
 
@@ -90,6 +109,8 @@ function addNewTransaction(){
    
     if(getForm().length > 22){
 
+      //noTransactionNotify.style.display = "none";
+
       newDiv.innerHTML = getForm();
       
       let icon = iconSource[getIconIndex()].cloneNode(true);
@@ -97,9 +118,13 @@ function addNewTransaction(){
       newDivIcon.appendChild(icon);
       
       newDiv.appendChild(newDivIcon);
+
       
-      divDestination.appendChild(newDiv);
       
+      //divDestination.appendChild(newDiv);
+
+      //newDiv.insertBefore(divDestination.firstChild);
+      divDestination.insertBefore(newDiv,divDestination.firstChild);
       console.log("add success");
       calculateCurrentBalance();
 
@@ -169,7 +194,7 @@ const category_string =
     'e-wallet'
   ];
 
-  
+
 
 function calculateCurrentBalance(){
 
@@ -184,16 +209,17 @@ function calculateCurrentBalance(){
   if(tempIndex == 1 || tempIndex == 8){
 
     currentBalanceValue += amount;
-    addToHistory('abby',amount,category_string[tempIndex]);
-    updateBalance(currentBalanceValue);
+    addToHistory(dataFromSession,amount,category_string[tempIndex]);
+    updateBalance(currentBalanceValue,dataFromSession);
   }
   else{
     currentBalanceValue -= amount;
-    addToHistory('abby',amount,category_string[tempIndex]);
-    updateBalance(currentBalanceValue);
+    addToHistory(dataFromSession,amount,category_string[tempIndex]);
+    updateBalance(currentBalanceValue,dataFromSession);
 
   }
 
+  //calculateCurrentBalance(dataFromSession);
   console.log('recent transaction = ', amount);
   console.log('current balance = ',currentBalanceValue);
 
@@ -208,6 +234,190 @@ function formatNum(value){
   return formattedNum;
 
 }
+
+
+const getBalance = (username)=>{
+
+  const currentBalance = document.getElementById("current-balance");
+  //let value;
+  $.ajax({
+    url: 'server/getUserBalance.php',
+    type: 'GET',
+    data:{
+      username:username
+    },
+    success: (response) => {
+
+      currentBalance.innerText = response;
+      //console.log("succesfully retreive user balance:", response);
+      //return(currentBalance.innerText);
+      //value = response;
+    }
+  });
+
+  //return(current);
+}
+
+
+
+const updateBalance = (transaction,username) => {
+  $.ajax({
+    url: 'server/updateBalance.php',
+    type: 'POST',
+    data:{
+      data1:transaction,
+      username:username
+    },
+    success: (response) => {
+      console.log("succesfully update user balance:",response,"\n");
+      getBalance(dataFromSession);
+      //return(response);
+    }
+  });
+}
+
+const getBalanceFromDiv=()=>{
+  const currentBalance = document.getElementById("current-balance");
+  return(currentBalance.innerText);
+}
+
+const addToHistory = (username,transaction_amount,category) =>{
+  $.ajax({
+    url: 'server/addHistory.php',
+    type: 'POST',
+    data:{
+      username:username,
+      transaction_amount:transaction_amount,
+      category:category
+    },
+    success: (response) => {
+      console.log(response);
+    }
+  });
+}
+
+
+
+const getHistory = (username) =>{
+
+  //checkIfTransactionExist(dataFromSession);
+  //let icon= iconSource[2].cloneNode(true);
+  //checkIfTransactionExist();
+  const noTransactionNotify = document.getElementById('no-transaction-notify');
+
+  $.ajax({
+    url: 'server/getHistory.php',
+    type: 'GET',
+    data:{
+      username:username
+    },
+    success: (response) => {
+
+      let data = JSON.parse(response);
+
+      if(data.length > 0) {
+        noTransactionNotify.remove();
+      }
+
+      let amount = [];
+      let iconData = [];
+      
+      for(let i=0; i<data.length; i++) {
+        if(!isNaN(data[i])){
+          amount[i] = parseInt(data[i]);
+          //console.log(amount[i]);
+        }
+        else{
+          iconData[i] = data[i];
+          //console.log(iconData[i]);
+        }
+      }
+
+      let cleanAmount = amount.filter(value => value);
+      let cleanIconData = iconData.filter(value => value);
+      
+
+      let iconDataIndex = [0];
+
+      for(let i = 0;i<cleanIconData.length;i++){
+
+       
+            
+            iconDataIndex[i] = category_string.indexOf(cleanIconData[i])+1;
+            
+            //console.log(iconDataIndex[i]);
+            
+        
+
+      }
+
+      let cleanIconIndex = iconDataIndex.filter(value => value);
+
+      /* // debug
+      console.log(cleanAmount);
+      console.log(cleanIconData);
+      console.log(cleanIconIndex);
+      console.log(iconData);
+      console.log(cleanIconIndex); */
+      
+
+      for(let i=0; i<amount.length; i++) {
+
+        const newDiv = document.createElement("div");
+        let newDivIcon = document.createElement("div");
+        const divDestination = document.getElementById('recent-transactions-contentbox');
+
+        newDiv.classList.add('transaction-box');
+        newDiv.classList.add('centered');
+        newDivIcon.classList.add('centered');
+        //let icon = cleanIconIndex[i].cloneNode(true);
+
+        let format = formatNum(cleanAmount[i]);
+
+        if(cleanIconIndex[i]-1 == 1 || cleanIconIndex[i]-1 == 8){
+
+          newDiv.innerHTML = "<h3> + "+format+"</h3>";
+          newDivIcon.appendChild(iconSource[cleanIconIndex[i]-1].cloneNode(true));
+
+
+        }
+
+        else{
+
+          newDiv.innerHTML = "<h3> - "+format+"</h3>";
+          newDivIcon.appendChild(iconSource[cleanIconIndex[i]-1].cloneNode(true));
+
+
+        }
+
+        newDiv.appendChild(newDivIcon);
+        divDestination.appendChild(newDiv);
+        //newDiv.insertBefore(divDestination.firstChild);
+
+        
+      }
+
+    
+      
+      
+       
+      
+    }
+  });
+}
+
+
+getBalance(dataFromSession);
+
+// dataFromSession == username
+const userID = dataFromSession;
+
+getHistory(userID);
+
+
+
+
+
 
 /* 
 const _getUserBalance = ()=>{
@@ -241,158 +451,10 @@ const _getUserBalance = ()=>{
 
     
     serverRequest.send();
-    
-    
-    
+  
     
 }
  */
-const getBalance = ()=>{
-
-  const currentBalance = document.getElementById("current-balance");
-  //let value;
-  $.ajax({
-    url: 'server/getUserBalance.php',
-    type: 'GET',
-    success: (response) => {
-
-      currentBalance.innerText = response;
-      //console.log("succesfully retreive user balance:", response);
-      //return(currentBalance.innerText);
-      //value = response;
-    }
-  });
-
-  //return(current);
-}
-
-const updateBalance = (transaction) => {
-  $.ajax({
-    url: 'server/updateBalance.php',
-    type: 'POST',
-    data:{
-      data1:transaction
-    },
-    success: (response) => {
-      console.log("succesfully update user balance:",response,"\n");
-      getBalance();
-      //return(response);
-    }
-  });
-}
-
-const getBalanceFromDiv=()=>{
-  const currentBalance = document.getElementById("current-balance");
-  return(currentBalance.innerText);
-}
-
-const addToHistory = (username,transaction_amount,category) =>{
-  $.ajax({
-    url: 'server/addHistory.php',
-    type: 'POST',
-    data:{
-      username:username,
-      transaction_amount:transaction_amount,
-      category:category
-    },
-    success: (response) => {
-      console.log(response);
-    }
-  });
-}
-
-
-
-const getHistory = (username) =>{
-
-  
-  //let icon= iconSource[2].cloneNode(true);
-  checkIfTransactionExist();
-  
-
-  $.ajax({
-    url: 'server/getHistory.php',
-    type: 'GET',
-    data:{
-      username:username
-    },
-    success: (response) => {
-
-      let data = JSON.parse(response);
-
-      let amount = [];
-      let iconData = [];
-      
-      for(let i=0; i<data.length; i++) {
-        if(!isNaN(data[i])){
-          amount[i] = parseInt(data[i]);
-          //console.log(amount[i]);
-        }
-        else{
-          iconData[i] = data[i];
-          //console.log(iconData[i]);
-        }
-      }
-
-      let cleanAmount = amount.filter(value => value);
-      let cleanIconData = iconData.filter(value => value);
-      //let index = 0;
-
-      let iconDataIndex = [0];
-
-      for(let i = 0;i<cleanIconData.length;i++){
-
-       
-            
-            iconDataIndex[i] = category_string.indexOf(cleanIconData[i])+1;
-            
-            //console.log(iconDataIndex[i]);
-            
-        
-
-      }
-
-      let cleanIconIndex = iconDataIndex.filter(value => value);
-
-      /* // debug
-      console.log(cleanAmount);
-      console.log(cleanIconData);
-      console.log(cleanIconIndex);
-      console.log(iconData);
-      console.log(cleanIconIndex); */
-
-      for(let i=0; i<amount.length; i++) {
-
-        const newDiv = document.createElement("div");
-        let newDivIcon = document.createElement("div");
-        const divDestination = document.getElementById('recent-transactions-contentbox');
-
-        newDiv.classList.add('transaction-box');
-        newDiv.classList.add('centered');
-        newDivIcon.classList.add('centered');
-        //let icon = cleanIconIndex[i].cloneNode(true);
-        let format = formatNum(cleanAmount[i]);
-        newDiv.innerHTML = "<h4>"+format+"</h4>";
-
-        newDivIcon.appendChild(iconSource[cleanIconIndex[i]-1].cloneNode(true));
-        newDiv.appendChild(newDivIcon);
-        divDestination.appendChild(newDiv);
-
-        
-      }
-
-    
-      
-      
-       
-      
-    }
-  });
-}
-getBalance();
-
-getHistory('abby');
-
 
 
 

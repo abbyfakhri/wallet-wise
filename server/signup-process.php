@@ -53,12 +53,31 @@ if(isset($_GET['username']) && isset($_GET['create-password']) && $_GET['confirm
                 '$username',
                 '$password'
                );
+
+               
         ");
+
+
+
+        //mysqli_close($connection);
+
+        require_once('connection.php');
+
+          $query2 = mysqli_query($connection,"
+
+            INSERT INTO
+            user_balance (username,balance)
+            VALUES
+            ('$username',0);
+        
+        ");  
 
         echo "
         <script>alert('account created')</script>
         ";
-        echo "<script>window.location = '/project/uas/home.html';</script>";
+        echo "<script>window.location = '/project/uas/home.html';                    
+        sessionStorage.setItem('username', '$username');
+        </script>";
 
     }
 

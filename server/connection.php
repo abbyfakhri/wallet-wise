@@ -1,12 +1,12 @@
 <?php
 $server_name="localhost:3308";
-$username="root";
+$username_server="root";
 $password="1234";
 $port = 3308;
 $db_name="project";
 
 //create connection to db
-$connection= mysqli_connect($server_name,$username,$password,$db_name);
+$connection= mysqli_connect($server_name,$username_server,$password,$db_name);
 
 //check connection
 if (!$connection) {
