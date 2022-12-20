@@ -14,5 +14,15 @@
 <body style="background-color: rgba(186,180,214,255);">
 
 <div class="header">
-        <h1>Delete Account</h1>
+        <h1>Are you sure you want to delete your account?</h1>
     </div>
+    <div class="container">
+                <form action="delete_proses.php" method="POST">
+                <button class="login-button" name="user_delete" value="<?=$row ['username'];?>">Delete</button>
+                     
+                </form>
+                <div class="container">
+                <button class="login-button" >
+                    <a href="profile.php" color:#483884>No</a>
+                    </button>
+                </div>
