@@ -40,7 +40,11 @@ require_once('connection.php');
                 <button class="login-button" >
                     <a href="signout.php" color:#483884>Signout</a>
                     </button>
-                </div>   
-
+                </div>
+                <div class="container">
+                <button class="login-button" >
+                    <a href="delete.php" color:#483884>Delete Account</a>
+                    </button>
+                </div>
 
             </div>
