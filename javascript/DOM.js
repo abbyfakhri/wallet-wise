@@ -16,7 +16,7 @@ function changeColor(index){
 
 
   if(iconToggle){
-    categoryIcon[index].style.backgroundColor = "lightblue"
+    categoryIcon[index].style.backgroundColor = "rgba(191, 185, 197, 0.8)"
     tempIndex = index; // to get index
     changeBack(index);
     iconToggle = false;
