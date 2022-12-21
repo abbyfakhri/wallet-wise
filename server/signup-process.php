@@ -1,4 +1,5 @@
 <?php
+
 require_once ('connection.php');
 
 
@@ -9,9 +10,7 @@ function isExist($user,$connection){
 
     if(mysqli_num_rows($query)>0){
 
-        
-
-        echo "<script>window.location = '/project/uas/signup.html';alert('user already exist');</script>";
+        return true;
 
     }
 }
@@ -19,17 +18,6 @@ function isExist($user,$connection){
 function checkIfMatch($password,$confirm){
     if($password != $confirm){
 
-        
-        echo "
-        <script>alert('password not match, try again')</script>
-        ";
-        echo "<script>window.location = '/project/uas/signup.html';</script>";
-
-
-        if(isset($_GET['create-password']) && $_GET['confirm-password']){
-            $_GET['create-password']='';
-            $_GET['confirm-password']='';
-        }
         return false;
     }
     else{
@@ -38,48 +26,50 @@ function checkIfMatch($password,$confirm){
 
 }
 
-if(isset($_GET['username']) && isset($_GET['create-password']) && $_GET['confirm-password']){
+
     $username = $_GET['username'];
-    $password = $_GET['create-password'];
-    $confirm_password = $_GET['confirm-password'];
+    $password = $_GET['password'];
+    $confirm_password = $_GET['password2'];
 
-    isExist($username,$connection);
+    
+        if(isExist($username,$connection) == true){
+            echo "alreadyExist";
+        }
+        else{
+            if(checkIfMatch($password,$confirm_password) ==  false){
+                echo "notMatch";
+            }
+            else{
 
-    if(checkIfMatch($password,$confirm_password) == true){
-        $query = mysqli_query($connection,"
-        
-        INSERT INTO user(username,password)
-        VALUES (
-                '$username',
-                '$password'
-               );
+                $query = mysqli_query($connection,"
+            
+                INSERT INTO user(username,password)
+                VALUES (
+                        '$username',
+                        '$password'
+                    );
+    
+                    
+                ");
 
-               
-        ");
+            
+                require_once('connection.php');
+    
+                $query2 = mysqli_query($connection,"
+    
+                    INSERT INTO
+                    user_balance (username,balance)
+                    VALUES
+                    ('$username',0);
+                
+                ");  
+    
+                echo "success";
+            }
+        }
+    
+    
+    
 
 
-
-        //mysqli_close($connection);
-
-        require_once('connection.php');
-
-          $query2 = mysqli_query($connection,"
-
-            INSERT INTO
-            user_balance (username,balance)
-            VALUES
-            ('$username',0);
-        
-        ");  
-
-        echo "
-        <script>alert('account created')</script>
-        ";
-        echo "<script>window.location = '/project/uas/home.html';                    
-        sessionStorage.setItem('username', '$username');
-        </script>";
-
-    }
-
-}
 ?>
