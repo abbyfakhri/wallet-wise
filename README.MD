@@ -14,3 +14,8 @@ A spending tracker site
 
 ![home](https://user-images.githubusercontent.com/98159404/208691102-2e4d5514-0853-4067-8c36-5e3977bb5cbc.png)
 
+## Database Schema
+
+![database schema](https://user-images.githubusercontent.com/98159404/208871734-3f0ea8ce-e4f8-4f9e-a63e-19579b9416a7.png)
+
+
