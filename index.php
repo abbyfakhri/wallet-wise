@@ -31,7 +31,7 @@
                     </svg>
 
                     <div>
-                            <div >
+                            <div>
                               
                               <input type="text" name="username" id="username" placeholder ="email or username" style= "text-align: center;"class = "textbox" value="<?php echo $_POST['username']; ?>"required>
                         </div>
