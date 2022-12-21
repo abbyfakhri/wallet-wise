@@ -10,7 +10,9 @@ body{
 
     background-size: cover;
     background-position: center; */
-
+    background-image: url("/project/uas/assets/waves.svg");
+    background-repeat: no-repeat;
+    background-size:cover;
     background-color: rgba(186,180,214,255);
     padding-bottom:20px;
     
