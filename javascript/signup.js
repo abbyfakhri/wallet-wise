@@ -11,14 +11,7 @@ const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
       alertPlaceholder.append(wrapper)
     }
-
-   /*  const alertTrigger = document.getElementById('button')
-    if (alertTrigger) {
-      alertTrigger.addEventListener('click', () => {
-        alertSection('password not match', 'danger')
-      })
-    } */
-
+   
     const check = (username,password,confirmPassword)=>{
 
         $.ajax({
@@ -69,7 +62,7 @@ const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
                 check(usernameForm.value,passwordForm.value,confirmPasswordForm.value);
             }
             else{
-                //alertPlaceholder.remove();
+                
                 alertSection("please fill out the form","danger");
                 
             }
