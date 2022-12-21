@@ -17,3 +17,4 @@ if(isset($_POST['user_delete']))
         header("Location: index.php");
     }
 }
+?>
