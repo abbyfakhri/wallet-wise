@@ -27,6 +27,8 @@ if (isset($_POST['submit']))
                         {
                             echo "<script>alert('Password gagal disimpan');window.location='$redirect';</script>";
                         }
+            }else{
+                echo "<script>alert('Password baru dan lama sama ');window.location='$redirect';</script>";
             }
         }
     }
