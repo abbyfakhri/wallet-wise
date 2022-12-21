@@ -13,10 +13,6 @@ if (isset($_POST['submit']))
     $conpas = $_POST['conpas'];
 
     $cek = mysqli_fetch_array($result);
-    if ($paslam=='' || $pasnew=='' || $conpas =='')
-    {
-        echo "<script>alert('Form tidak boleh ada yang kosong');window.location='$redirect';</script>";
-    }else{
         if($paslam <> $cek['password'] )
         {
             echo "<script>alert('Password Lama tidak sama');window.location='$redirect';</script>";
@@ -38,6 +34,5 @@ if (isset($_POST['submit']))
             }
         }
     }
-}
 
 ?>
