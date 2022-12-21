@@ -10,7 +10,6 @@ if (isset($_POST['submit']))
 {
     $paslam = $_POST['paslam'];
     $pasnew = $_POST['pasnew'];
-    $conpas = $_POST['conpas'];
 
     $cek = mysqli_fetch_array($result);
         if($paslam <> $cek['password'] )
@@ -18,12 +17,9 @@ if (isset($_POST['submit']))
             echo "<script>alert('Password Lama tidak sama');window.location='$redirect';</script>";
         }else{
 
-            if($paslam <> $conpas )
+            if($paslam <> $pasnew )
             {
-                echo "<script>alert('Password Baru dan Konfirmasi Password tidak cocok');window.location='$redirect';</script>";
-            }else
-            {
-                $sql = mysqli_query($connection,"UPDATE user SET password = '$pasnew' WHERE username = '$username'");
+                $sql = mysqli_query($conn,"UPDATE user SET password = '$pasnew' WHERE username = '$username'");
                 if($sql)
                     {
                     echo "<script>alert('Password berhasil disimpan');window.location='$redirect';</script>";
