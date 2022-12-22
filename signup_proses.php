@@ -27,6 +27,7 @@ if (isset($_POST['submits'])) {
                 $username = "";
                 $_POST['password'] = "";
                 $_POST['cpassword'] = "";
+                header("Location: index.php");
             } else {
                 echo "<script>alert('Woops! Terjadi kesalahan.')</script>";
             }
