@@ -2,8 +2,7 @@
 
 A spending tracker site  
 
-## Explanation Video Link
-https://www.youtube.com/watch?v=oE8UnklzO6M
+
 ## Login Page
 
 ![loginalert](https://user-images.githubusercontent.com/98159404/209352590-b1a15a7d-e62c-4598-8ecd-d2f1743cbac9.png)
